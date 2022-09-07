@@ -9,7 +9,9 @@ const QuizPage = (props) => {
         return (
             <div key={id}>
                 <h1 className='font-semibold text-xl text-sky-900 mb-4'>{elements.question}</h1>
-                <button className='text-blue-900 px-4 font-semibold py-1 rounded-xl  border border-sky-900'>{elements.incorrect_answers}</button>
+                {elements.incorrect_answers.map(options =>
+                <button className='text-blue-900 px-4 font-semibold py-1 rounded-xl  border border-sky-900'>{options}</button>)}
+                <button className='text-blue-900 px-4 font-semibold py-1 rounded-xl  border border-sky-900'>{elements.correct_answer}</button>
                 <hr className='my-5' />
             </div>
         )
