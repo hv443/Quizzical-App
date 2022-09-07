@@ -4,6 +4,6 @@
 
 @layer components {
   button {
-    @apply mr-2;
+    @apply mr-2 mt-2;
   }
 }
