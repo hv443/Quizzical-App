@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useState } from 'react';
 
 const QuizPage = (props) => {
 
@@ -33,7 +32,7 @@ const QuizPage = (props) => {
                                 "cursor-pointer  hover:bg-blue-200 hover:border-blue-200"
                                 : "cursor-not-allowed"} 
                               md:text-sm text-[12px] md:mr-5 
-                            font-semibold border text-center py-2 px-3 rounded-xl`}>{option.value}</button>
+                            font-semibold border text-center py-2 px-3 rounded-xl `}>{option.value}</button>
                 </div>
             )
         })
