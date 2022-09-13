@@ -22,7 +22,7 @@ const QuizPage = (props) => {
             else if (option.isNotSelectedIncorrect) {
                 optionBgColor = "text-gray-400 border-gray-400"
             } else {
-                optionBgColor = option.isHeld ? "bg-blue-300 border-blue-300" : "bg-white "
+                optionBgColor = option.isHeld ? "bg-blue-300 border-blue-300" : "bg-white border-gray-500 "
             }
 
             return (
@@ -32,7 +32,7 @@ const QuizPage = (props) => {
                         ${props.isplaying ?
                                 "cursor-pointer  hover:bg-blue-200 hover:border-blue-200"
                                 : "cursor-not-allowed"} 
-                             border-blue-700 md:text-sm text-[12px] md:mr-5 
+                              md:text-sm text-[12px] md:mr-5 
                             font-semibold border text-center py-2 px-3 rounded-xl`}>{option.value}</button>
                 </div>
             )
