@@ -3,49 +3,63 @@ import React from 'react';
 
 const QuizPage = (props) => {
 
-    const allOptions = props.elements.map((elements, id) => {
-        const options = (elements.incorrect_answers.concat(elements.correct_answer))
 
-        console.log(options)
+    const quizes = props.elements.map((allElements, id) => {
+
+        const questions = allElements.questions
+
+        const options = allElements.options.map((option, id) => {
+
+            let optionBgColor = ""
+            if (option.isCorrectAnswer) {
+                optionBgColor = "bg-green-400 border-green-400"
+            } else if (option.isIncorrectAnswer) {
+                optionBgColor = 'bg-red-300 border-red-300 text-gray-500'
+            }
+            else if (option.isNotSelectedCorrect) {
+                optionBgColor = "bg-green-400 border-green-400"
+            }
+            else if (option.isNotSelectedIncorrect) {
+                optionBgColor = "text-gray-400 border-gray-400"
+            } else {
+                optionBgColor = option.isHeld ? "bg-blue-300 border-blue-300" : "bg-white "
+            }
+
+            return (
+                <div key={id} className='inline-block'>
+                    <button onClick={() => { props.selectOption(option.id, allElements.id) }}
+                        className={`border-1 ${optionBgColor} 
+                        ${props.isplaying ?
+                                "cursor-pointer  hover:bg-blue-200 hover:border-blue-200"
+                                : "cursor-not-allowed"} 
+                             border-blue-700 md:text-sm text-[12px] md:mr-5 
+                            font-semibold border text-center py-2 px-3 rounded-xl`}>{option.value}</button>
+                </div>
+            )
+        })
 
         return (
-            <div key={id}>
-                <h1 className='font-semibold text-xl text-sky-900 mb-4'>{elements.question}</h1>
+            <div className='text-gray-900' key={id}>
+                <div>
+                    <h1 className='font-semibold text-m md:text-xl'>{questions}</h1>
+                </div>
 
+                <div>
+                    {options}
+                </div>
 
-                {options.map((e, id) => <button key={id} className='text-blue-900 px-4 font-semibold py-1 rounded-xl  border border-sky-900'>{e}</button>)}
-
-
-                <hr className='my-5' />
+                <hr className='mt-5 mb-5' />
             </div>
         )
-
-
     })
 
-    // const quizElements = props.elements.map((elements, id) => {
-
-    //     return (
-    //         <div key={id}>
-    //             <h1 className='font-semibold text-xl text-sky-900 mb-4'>{elements.question}</h1>
-    //             {elements.incorrect_answers.map((options, id) =>
-    //                 <button key={id} className='text-blue-900 px-4 font-semibold py-1 rounded-xl  border border-sky-900'>{options}</button>)}
-    //             <button className='text-blue-900 px-4 font-semibold py-1 rounded-xl  border border-sky-900'>{elements.correct_answer}</button>
-    //             <hr className='my-5' />
-    //         </div>
-    //     )
-    // })
 
 
     return (
-        <div className='px-24 py-14'>
-            <div>
-                {allOptions}
-            </div>
+        <div className='w-full'>
 
-            <div className='w-full text-center '>
-                <button className='bg-blue-900  text-white font-semibold p-3 rounded-xl'>Check answers</button>
-            </div>
+            {quizes}
+
         </div>
     );
 }

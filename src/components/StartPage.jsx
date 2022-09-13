@@ -7,7 +7,7 @@ const StartPage = (props) => {
             <p className='mb-6 text-blue-900'>Click on Start to play the Quiz</p>
 
             <button onClick={props.startFunction} className='bg-blue-900 text-white font-semibold p-3 rounded-xl'>Start Quiz</button>
-        </div>
+        </div >
     );
 }
 
