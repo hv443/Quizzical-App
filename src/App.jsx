@@ -133,7 +133,7 @@ function App() {
   }
 
   return (
-    <div className="App px-10 py-5">
+    <div className="App px-10 py-5 min-w-full flex items-center justify-center min-h-screen">
 
       {!start
         ?
