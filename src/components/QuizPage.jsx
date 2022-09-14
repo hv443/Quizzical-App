@@ -46,7 +46,7 @@ const QuizPage = (props) => {
                 </div>
 
                 <div>
-                    {decode(options)}
+                    {options}
                 </div>
 
                 <hr className='mt-5 mb-5' />
