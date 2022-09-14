@@ -40,7 +40,7 @@ const QuizPage = (props) => {
         })
 
         return (
-            <div className='text-[#293264]' key={id}>
+            <div className='text-[#293264] max-w-[90%] md:max-w-4xl' key={id}>
                 <div>
                     <h1 className='font-semibold text-m md:text-xl'>{decode(questions)}</h1>
                 </div>

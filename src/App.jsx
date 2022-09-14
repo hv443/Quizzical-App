@@ -152,14 +152,13 @@ function App() {
             {!isPlaying ?
               <div className='flex items-center justify-center'>
                 <div className='font-semibold text-xl text-gray-900 mr-5'>
-                  <h1 className='font-semibold text-sm'>You scored {score}/5 correct answers</h1>
+                  <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/5 correct answers</h1>
                 </div>
 
-                <div></div>
-                <button onClick={newGame} className='text-sm bg-blue-700 rounded-lg font-semibold text-white'>Play Again</button>
+                <button onClick={newGame} className='p-3 text-sm bg-blue-700 rounded-lg font-[500] text-white md:px-5 md:font-semibold'>Play Again</button>
               </div>
               :
-              <button onClick={checkAnswer} className='text-sm bg-blue-700 rounded-lg font-semibold text-white'>Check Answer</button>
+              <button onClick={checkAnswer} className='p-3 text-sm bg-blue-700 rounded-lg font-[500] text-white md:px-5 md:font-semibold'>Check Answer</button>
             }
           </div>
         </div>
