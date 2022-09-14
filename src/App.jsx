@@ -147,14 +147,14 @@ function App() {
           />
 
           {!isPlaying ?
-            <div className='flex items-center justify-center'>
+            <div className='flex items-center justify-center flex-col space-y-2 md:flex-row'>
               <div className='font-semibold text-xl text-gray-900 mr-5'>
                 <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/5 correct answers</h1>
               </div>
-              <button onClick={newGame} className='p-2  bg-[#293264] text-sm rounded-lg font-[400] text-white md:px-5 md:font-semibold'>Play Again</button>
+              <button onClick={newGame} className='p-2  bg-[#293264] text-sm rounded-lg font-[400] text-white md:p-3 md:font-semibold'>Play Again</button>
             </div>
             :
-            <button onClick={checkAnswer} className='p-2 bg-[#293264] text-sm rounded-lg font-[400] text-white md:px-5 md:font-semibold'>Check Answer</button>
+            <button onClick={checkAnswer} className='p-2 bg-[#293264] text-sm rounded-lg font-[400] text-white md:p-3 md:font-semibold'>Check Answer</button>
           }
         </div>
 

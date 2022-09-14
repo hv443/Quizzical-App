@@ -2,7 +2,7 @@ import React from 'react';
 
 const StartPage = (props) => {
     return (
-        <div className="w-screen min-h-screen text-[#293264] grid place-items-center place-content-center text-center gap-4">
+        <div className="w-screen min-h-screen text-[#293264] grid place-items-center place-content-center text-center gap-5">
             <div>
                 <h1 className='font-semibold text-3xl tracking-wider md:text-4xl'>Quizzical</h1>
                 <p className='text-sm md:text-lg'>Click on Start to play the Quiz</p>

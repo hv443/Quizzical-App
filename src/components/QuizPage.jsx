@@ -33,7 +33,7 @@ const QuizPage = (props) => {
                             : "cursor-not-allowed"} 
 
                               md:text-sm text-[12px] font-[Karla]
-                            font-[500] mr-2 mb-2 border text=[#4d5d9e] text-center p-1 px-2  rounded-md `}>{decode(option.value)}</button>
+                            font-[400] mr-3 mb-3 border text=[#4d5d9e] text-center p-1 px-2  rounded-md `}>{decode(option.value)}</button>
             )
         })
 
