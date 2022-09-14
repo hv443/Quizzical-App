@@ -8,9 +8,10 @@ function App() {
 
   const [start, setStart] = useState(false)
   const [data, setData] = useState([])
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(false)
   const [restartGame, setRestartGame] = useState(false)
   const [score, setScore] = useState(0)
+  // const [selectAllOptions, setSelectAllOptions] = useState(0)
 
   function startQuiz() {
     setStart(pre => !pre)
@@ -36,7 +37,7 @@ function App() {
   function quizData(elements) {
     return elements.map((data) =>
     ({
-      options: setOptions(data.incorrect_answers.concat(data.correct_answer), data.correct_answer).sort((a, b) => 0.5 - Math.random()),
+      options: setOptions(data.incorrect_answers.concat(data.correct_answer), data.correct_answer).sort(() => 0.5 - Math.random()),
       questions: data.question,
       correctOption: data.correct_answer,
       id: nanoid()
@@ -46,10 +47,13 @@ function App() {
 
 
   function optionClicked(clickId, questionId) {
+
     setData(data.map(allElements => {
+
       if (allElements.id === questionId) {
 
         const elementData = allElements.options.map(option => {
+
           if (option.id === clickId) {
             return ({
               ...option,
@@ -73,12 +77,31 @@ function App() {
       } else {
         return allElements
       }
+
     }))
   }
 
+  // function select() {
+  //   setData(data.map(allElements => {
+  //     allElements.options.map(option => {
+  //       if (option.isHeld) {
+  //         setSelectAllOptions(pre => pre + 1)
+  //         console.log(selectAllOptions)
+  //         return ({
+  //           ...option
+  //         })
+  //       }
+  //       return { ...option }
+  //     })
+  //     return { ...allElements }
+  //   }))
+  // }
 
   function checkAnswer() {
+
     setIsPlaying(pre => !pre)
+
+
     setData(data.map(allElements => {
       const optionslist = allElements.options.map(option => {
 
@@ -133,7 +156,7 @@ function App() {
   }
 
   return (
-    <div className="App font-[inter]">
+    <div className="font-[inter]">
 
       {!start
         ?
@@ -146,21 +169,22 @@ function App() {
             isplaying={isPlaying}
           />
 
-          {!isPlaying ?
+          {isPlaying ?
             <div className='flex items-center justify-center flex-col space-y-2 md:flex-row'>
               <div className='font-semibold text-xl text-gray-900 mr-5'>
-                <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/5 correct answers</h1>
+                <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
               </div>
               <button onClick={newGame} className='p-2  bg-[#293264] text-sm rounded-lg font-[400] text-white md:p-3 md:font-semibold'>Play Again</button>
             </div>
             :
             <button onClick={checkAnswer} className='p-2 bg-[#293264] text-sm rounded-lg font-[400] text-white md:p-3 md:font-semibold'>Check Answer</button>
+
           }
         </div>
 
       }
 
-    </div>
+    </div >
   )
 }
 

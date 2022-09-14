@@ -29,8 +29,8 @@ const QuizPage = (props) => {
                 <button key={id} onClick={() => { props.selectOption(option.id, allElements.id) }}
                     className={` ${optionBgColor} 
                         ${props.isplaying ?
-                            "cursor-pointer  hover:bg-blue-200 hover:border-blue-200"
-                            : "cursor-not-allowed"} 
+                            "cursor-not-allowed"
+                            : "cursor-pointer hover:bg-blue-200 hover:border-blue-200"} 
 
                               md:text-sm text-sm font-[Karla]
                             font-[400] mr-3 mb-3 border  text=[#4d5d9e] text-center p-1 px-2  rounded-md `}>{decode(option.value)}</button>
