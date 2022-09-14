@@ -133,35 +133,32 @@ function App() {
   }
 
   return (
-    <div className="App px-10 py-5 min-w-full flex items-center justify-center min-h-screen font-[inter]">
+    <div className="App font-[inter]">
 
       {!start
         ?
         <StartPage startFunction={startQuiz} />
         :
-        <div>
+        <div className='min-h-screen min-w-full p-4 flex items-center justify-center flex-col space-y-2'>
+
           <QuizPage elements={data}
             selectOption={optionClicked}
             isplaying={isPlaying}
           />
 
-
-
-          <div className='w-full place-content-center grid'>
-
-            {!isPlaying ?
-              <div className='flex items-center justify-center'>
-                <div className='font-semibold text-xl text-gray-900 mr-5'>
-                  <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/5 correct answers</h1>
-                </div>
-
-                <button onClick={newGame} className='p-3 text-sm bg-blue-700 rounded-lg font-[500] text-white md:px-5 md:font-semibold'>Play Again</button>
+          {!isPlaying ?
+            <div className='flex items-center justify-center'>
+              <div className='font-semibold text-xl text-gray-900 mr-5'>
+                <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/5 correct answers</h1>
               </div>
-              :
-              <button onClick={checkAnswer} className='p-3 text-sm bg-blue-700 rounded-lg font-[500] text-white md:px-5 md:font-semibold'>Check Answer</button>
-            }
-          </div>
+
+              <button onClick={newGame} className='p-3 bg-[#293264]  text-sm rounded-lg font-[500] text-white md:px-5 md:font-semibold'>Play Again</button>
+            </div>
+            :
+            <button onClick={checkAnswer} className='p-3 bg-[#293264]  text-sm rounded-lg font-[500] text-white md:px-5 md:font-semibold'>Check Answer</button>
+          }
         </div>
+
       }
 
     </div>

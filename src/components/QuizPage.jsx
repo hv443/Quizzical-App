@@ -26,22 +26,20 @@ const QuizPage = (props) => {
             }
 
             return (
-                <div key={id} className='inline-block'>
-                    <button onClick={() => { props.selectOption(option.id, allElements.id) }}
-                        className={`border-1 ${optionBgColor} 
+                <button key={id} onClick={() => { props.selectOption(option.id, allElements.id) }}
+                    className={` ${optionBgColor} 
                         ${props.isplaying ?
-                                "cursor-pointer  hover:bg-blue-200 hover:border-blue-200"
-                                : "cursor-not-allowed"} 
+                            "cursor-pointer  hover:bg-blue-200 hover:border-blue-200"
+                            : "cursor-not-allowed"} 
 
-                              md:text-sm text-[12px] md:mr-5  font-[Karla]
-                            font-semibold border text=[#4d5d9e] text-center py-2 px-3 rounded-xl `}>{option.value}</button>
-                </div>
+                              md:text-sm text-[12px] font-[Karla]
+                            font-[500] mr-2 mb-2 border text=[#4d5d9e] text-center p-1 px-2  rounded-md `}>{decode(option.value)}</button>
             )
         })
 
         return (
-            <div className='text-[#293264] max-w-[90%] md:max-w-4xl' key={id}>
-                <div>
+            <div className='text-[#293264] max-w-[90%] space-y-3 mb-4 md:max-w-4xl'>
+                <div className='mb-4'>
                     <h1 className='font-semibold text-m md:text-xl'>{decode(questions)}</h1>
                 </div>
 
@@ -49,13 +47,13 @@ const QuizPage = (props) => {
                     {options}
                 </div>
 
-                <hr className='mt-5 mb-5' />
+                <hr />
             </div>
         )
     })
 
     return (
-        <div>
+        <div className='w-[90%] md:max-w-4xl'>
 
             {quizes}
 
