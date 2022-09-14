@@ -1,4 +1,5 @@
 import React from 'react';
+import { decode } from 'html-entities';
 
 const QuizPage = (props) => {
 
@@ -31,28 +32,27 @@ const QuizPage = (props) => {
                         ${props.isplaying ?
                                 "cursor-pointer  hover:bg-blue-200 hover:border-blue-200"
                                 : "cursor-not-allowed"} 
-                              md:text-sm text-[12px] md:mr-5 
-                            font-semibold border text-center py-2 px-3 rounded-xl `}>{option.value}</button>
+
+                              md:text-sm text-[12px] md:mr-5  font-[Karla]
+                            font-semibold border text=[#4d5d9e] text-center py-2 px-3 rounded-xl `}>{option.value}</button>
                 </div>
             )
         })
 
         return (
-            <div className='text-gray-900' key={id}>
+            <div className='text-[#293264]' key={id}>
                 <div>
-                    <h1 className='font-semibold text-m md:text-xl'>{questions}</h1>
+                    <h1 className='font-semibold text-m md:text-xl'>{decode(questions)}</h1>
                 </div>
 
                 <div>
-                    {options}
+                    {decode(options)}
                 </div>
 
                 <hr className='mt-5 mb-5' />
             </div>
         )
     })
-
-
 
     return (
         <div className='w-full'>
