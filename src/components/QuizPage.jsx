@@ -55,7 +55,7 @@ const QuizPage = (props) => {
     })
 
     return (
-        <div className='w-full'>
+        <div>
 
             {quizes}
 
