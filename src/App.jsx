@@ -21,6 +21,8 @@ function App() {
   // To stop first Render
   const firstRender = useRef(false)
 
+  const [loading, setLoading] = useState(true)
+
   function startQuiz() {
     setStart(pre => !pre)
     const userSelect = localStorage.getItem("URL")
@@ -30,8 +32,9 @@ function App() {
 
   function newGame() {
     setRestartGame(pre => !pre)
-    setScore(0)
     setIsPlaying(pre => !pre)
+    setLoading(pre => !pre)
+    setScore(0)
     setData(false)
   }
 
@@ -46,13 +49,14 @@ function App() {
         .then(res => res.json())
         .then(e => {
           setData(quizData(e.results))
+          setLoading(pre => !pre)
         })
+      console.log(data)
     } else {
       firstRender.current = true
     }
   }, [restartGame, start])
 
-  console.log(data)
 
   function quizData(elements) {
     return elements.map((data) =>
@@ -185,13 +189,18 @@ function App() {
 
         <div>
           {
-            data ?
+            loading ?
+
+              <LoadingScreen />
+
+              :
+
               <div className='min-h-screen min-w-full p-4 flex items-center justify-center flex-col space-y-2'>
 
                 {start &&
                   <div className='w-[95%] md:max-w-4xl'>
                     <button onClick={back} className='py-2 px-3 mb-5 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                        md:px-5 md:py-3 md:font-semibold'>Back</button>
+                      md:px-5 md:py-3 md:font-semibold'>Back</button>
                   </div>
                 }
 
@@ -206,16 +215,15 @@ function App() {
                       <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
                     </div>
                     <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                      md:p-4 md:px-5 md:font-semibold'>Play Again</button>
+                    md:p-4 md:px-5 md:font-semibold'>Play Again</button>
                   </div>
                   :
                   <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                     md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
+                   md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
                 }
 
               </div>
-              :
-              <LoadingScreen />
+
           }
         </div>
 

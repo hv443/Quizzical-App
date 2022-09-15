@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 const FormSelect = () => {
 
     const [formData, setFormData] = useState({
-        category: '9',
-        difficulty: 'easy',
-        type: 'multiple',
-        number: 5
+        category: '',
+        difficulty: '',
+        type: '',
+        amount: 5
     })
 
-    const API_URL = `https://opentdb.com/api.php?amount=${formData.number}&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.type}`
+    // https://opentdb.com/api.php?amount=10
+
+    const API_URL = `https://opentdb.com/api.php?amount=${formData.amount}&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.type}`
 
     function handleClick(event) {
         const { name, value } = event.target
@@ -18,6 +20,7 @@ const FormSelect = () => {
             [name]: value
         }))
     }
+
     console.log(API_URL)
 
     useEffect(() => {
@@ -29,24 +32,32 @@ const FormSelect = () => {
             <h1 className='font-semibold text-xl mb-4'>Select what types of question you want</h1>
 
             <div>
-                <label htmlFor="no">No of Questions :</label>
-                <input className='bg-gray-200 p-2 rounded-md m-2 appearance-none outline-none' type="number" min="5" max="50" name="number" id="no" value={formData.number} onChange={handleClick} />
+                <label htmlFor="amount">No of Questions :</label>
+                <input className='bg-gray-200 p-2 rounded-md m-2 appearance-none outline-none' type="number" min="5" max="50" name="amount" id="no" value={formData.amount} onChange={handleClick} />
             </div>
 
             <div>
                 <label htmlFor="category">Select Category :</label>
-                <select className='p-2 bg-sky-100 rounded-md m-2 ' name='category' onChange={handleClick}>
-                    {/* <option value="9">All</option> */}
+                <select className='p-2 bg-gray-200 rounded-md m-2 ' name='category' onChange={handleClick}>
                     <option value="9">General Knowledge</option>
+                    <option value="">---All category---</option>
+                    <option value="12">Music</option>
+                    <option value="11">Film</option>
+                    <option value="15">Video Games</option>
                     <option value="21">Sports</option>
+                    <option value="17">Science & Nature</option>
+                    <option value="26">Celebrities</option>
                     <option value="23">History</option>
+                    <option value="27">Animals</option>
+
+
                 </select>
             </div>
 
             <div>
                 <label htmlFor="type">Select Type :</label>
-                <select className='p-2 bg-sky-100 rounded-md m-2' name='type' onChange={handleClick}>
-                    {/* <option value="all">All</option> */}
+                <select className='p-2 bg-gray-200 rounded-md m-2' name='type' onChange={handleClick}>
+                    <option value="">---Any Type---</option>
                     <option value="multiple">Multiple choice</option>
                     <option value="boolean">True/False</option>
                 </select>
@@ -54,7 +65,8 @@ const FormSelect = () => {
 
             <div>
                 <label htmlFor="difficulty">Select Difficulty :</label>
-                <select className='p-2 bg-sky-100 rounded-md m-2' name='difficulty' onChange={handleClick}>
+                <select className='p-2 bg-gray-200 rounded-md m-2' name='difficulty' onChange={handleClick}>
+                    <option value="">---Any---</option>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
