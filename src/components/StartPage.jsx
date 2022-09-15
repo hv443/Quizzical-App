@@ -5,10 +5,7 @@ import UserSelectForm from './UserSelectForm';
 const StartPage = (props) => {
     return (
 
-        <div className='min-h-screen relative text-[#293264] grid place-items-center place-content-center text-center gap-5'>
-
-            <img src="./img/blob 5.png" alt="bgimg" className='absolute right-0 top-0 w-[20%]' />
-            <img src="./img/blob 5 (1).png" alt="bgimg" className='absolute left-0 bottom-0 w-[20%]' />
+        <div className='min-h-screen  text-[#293264] grid place-items-center place-content-center text-center gap-5'>
 
             <div>
                 <h1 className='font-semibold text-3xl tracking-wider md:text-4xl'>Quizzical</h1>
