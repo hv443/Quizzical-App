@@ -34,7 +34,8 @@ const QuizPage = (props) => {
 
                               md:text-sm text-sm font-[Karla] duration-300
                             font-[400] border mr-3 mb-3 md:mr-5
-                             text=[#4d5d9e] text-center p-2 px-8  rounded-md `}>{decode(option.value)}</button>
+                             text=[#4d5d9e] text-center py-2 px-4 rounded-md
+                             md:px-8 `}>{decode(option.value)}</button>
             )
         })
 
