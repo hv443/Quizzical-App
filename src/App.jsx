@@ -29,20 +29,20 @@ function App() {
     setData(false)
   }
 
-  async function getData() {
-    const response = await fetch('https://opentdb.com/api.php?amount=5')
-    const resData = await response.json();
-    setData(quizData(resData.results))
-  }
+  // async function getData() {
+  //   const response = await fetch('https://opentdb.com/api.php?amount=5')
+  //   const resData = await response.json();
+  //   setData(quizData(resData.results))
+  // }
 
   useEffect(() => {
-    // fetch('https://opentdb.com/api.php?amount=5')
-    //   .then(res => res.json())
-    //   .then(e => {
-    //     setData(quizData(e.results))
-    //   })
+    fetch('https://opentdb.com/api.php?amount=5')
+      .then(res => res.json())
+      .then(e => {
+        setData(quizData(e.results))
+      })
 
-    getData();
+    // getData();
   }, [restartGame])
 
 
