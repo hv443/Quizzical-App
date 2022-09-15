@@ -28,16 +28,16 @@ const FormSelect = () => {
     }, [formData]);
 
     return (
-        <div>
-            <h1 className='font-semibold text-xl mb-4'>Select what types of question you want</h1>
+        <div className='text-sm'>
+            <h1 className='font-semibold text-lg mb-4'>Select what types of Questions you want</h1>
 
             <div>
-                <label htmlFor="amount">No of Questions :</label>
-                <input className='bg-gray-200 p-2 rounded-md m-2 appearance-none outline-none' type="number" min="5" max="50" name="amount" id="no" value={formData.amount} onChange={handleClick} />
+                <label htmlFor="amount" className='font-semibold text-gray-700'>No of Questions :</label>
+                <input className='bg-gray-200 p-2 rounded-md m-2 w-20 text-center appearance-none outline-none' type="number" min="5" max="50" name="amount" id="no" value={formData.amount} onChange={handleClick} />
             </div>
 
             <div>
-                <label htmlFor="category">Select Category :</label>
+                <label htmlFor="category" className='font-semibold text-gray-700'>Select Category :</label>
                 <select className='p-2 bg-gray-200 rounded-md m-2 ' name='category' onChange={handleClick}>
                     <option value="9">General Knowledge</option>
                     <option value="">---All category---</option>
@@ -55,7 +55,7 @@ const FormSelect = () => {
             </div>
 
             <div>
-                <label htmlFor="type">Select Type :</label>
+                <label htmlFor="type" className='font-semibold text-gray-700'>Select Type :</label>
                 <select className='p-2 bg-gray-200 rounded-md m-2' name='type' onChange={handleClick}>
                     <option value="">---Any Type---</option>
                     <option value="multiple">Multiple choice</option>
@@ -64,7 +64,7 @@ const FormSelect = () => {
             </div>
 
             <div>
-                <label htmlFor="difficulty">Select Difficulty :</label>
+                <label htmlFor="difficulty" className='font-semibold text-gray-700'>Select Difficulty :</label>
                 <select className='p-2 bg-gray-200 rounded-md m-2' name='difficulty' onChange={handleClick}>
                     <option value="">---Any---</option>
                     <option value="easy">Easy</option>
