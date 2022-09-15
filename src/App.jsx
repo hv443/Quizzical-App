@@ -3,11 +3,15 @@ import './App.css'
 import QuizPage from './components/QuizPage'
 import StartPage from './components/StartPage'
 import { nanoid } from 'nanoid'
+import LoadingScreen from './components/LoadingScreen'
+import topBg from "../assets/blob T.png"
+import bottomBg from "../assets/blob B.png"
+
 
 function App() {
 
   const [start, setStart] = useState(false)
-  const [data, setData] = useState([])
+  const [data, setData] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [restartGame, setRestartGame] = useState(false)
   const [score, setScore] = useState(0)
@@ -22,15 +26,23 @@ function App() {
     setRestartGame(pre => !pre)
     setScore(0)
     setIsPlaying(pre => !pre)
+    setData(false)
   }
 
+  async function getData() {
+    const response = await fetch('https://opentdb.com/api.php?amount=5')
+    const resData = await response.json();
+    setData(quizData(resData.results))
+  }
 
   useEffect(() => {
-    fetch('https://opentdb.com/api.php?amount=5')
-      .then(res => res.json())
-      .then(e => {
-        setData(quizData(e.results))
-      })
+    // fetch('https://opentdb.com/api.php?amount=5')
+    //   .then(res => res.json())
+    //   .then(e => {
+    //     setData(quizData(e.results))
+    //   })
+
+    getData();
   }, [restartGame])
 
 
@@ -76,6 +88,7 @@ function App() {
 
     }))
   }
+
 
   // function select() {
   //   setData(data.map(allElements => {
@@ -152,36 +165,46 @@ function App() {
   }
 
   return (
-    <div className="font-[inter] min-h-screen relative z-0 bg-gray-50">
+    <div className="font-[inter] min-h-screen relative z-0">
 
-      <img src="./img/blob 5.png" alt="bgimg" className='-z-10 absolute right-0 top-0 w-[30%] md:w-[25%]' />
-      <img src="./img/blob 5 (1).png" alt="bgimg" className='-z-10 absolute left-0 bottom-0 w-[30%] md:w-[25%]' />
+      <img src={topBg} alt="bgimg" className='-z-10 absolute right-0 top-0 w-[30%] md:w-[25%]' />
+      <img src={bottomBg} alt="bgimg" className='-z-10 absolute left-0 bottom-0 w-[30%] md:w-[25%]' />
 
       {!start
         ?
         <StartPage startFunction={startQuiz} />
         :
-        <div className='min-h-screen min-w-full p-4 flex items-center justify-center flex-col space-y-2'>
 
-          <QuizPage elements={data}
-            selectOption={optionClicked}
-            isplaying={isPlaying}
-          />
+        <div>
+          {
+            data ?
+              <div className='min-h-screen min-w-full p-4 flex items-center justify-center flex-col space-y-2'>
 
-          {isPlaying ?
-            <div className='flex items-center justify-center flex-col space-y-2 md:flex-row'>
-              <div className='font-semibold text-xl text-gray-900 mr-5'>
-                <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
-              </div>
-              <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                <QuizPage elements={data}
+                  selectOption={optionClicked}
+                  isplaying={isPlaying}
+                />
+
+                {isPlaying ?
+                  <div className='flex items-center justify-center flex-col space-y-2 md:flex-row'>
+                    <div className='font-semibold text-xl text-gray-900 mr-5'>
+                      <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
+                    </div>
+                    <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
               md:p-4 md:px-5 md:font-semibold'>Play Again</button>
-            </div>
-            :
-            <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                  </div>
+                  :
+                  <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
             md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
-          }
+                }
 
+              </div>
+              :
+              <LoadingScreen />
+          }
         </div>
+
+
 
       }
 
