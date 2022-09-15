@@ -45,15 +45,11 @@ function App() {
   }
 
 
-
   function optionClicked(clickId, questionId) {
-
     setData(data.map(allElements => {
-
       if (allElements.id === questionId) {
 
         const elementData = allElements.options.map(option => {
-
           if (option.id === clickId) {
             return ({
               ...option,
@@ -101,11 +97,11 @@ function App() {
 
     setIsPlaying(pre => !pre)
 
-
     setData(data.map(allElements => {
       const optionslist = allElements.options.map(option => {
 
         if (option.isCorrect && option.isHeld) {
+
           setScore(pre => pre + 1)
 
           return ({
@@ -156,7 +152,7 @@ function App() {
   }
 
   return (
-    <div className="font-[inter]">
+    <div className="font-[inter] bg-gray-50">
 
       {!start
         ?
@@ -174,12 +170,14 @@ function App() {
               <div className='font-semibold text-xl text-gray-900 mr-5'>
                 <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
               </div>
-              <button onClick={newGame} className='p-2  bg-[#293264] text-sm rounded-lg font-[400] text-white md:p-3 md:font-semibold'>Play Again</button>
+              <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+              md:p-4 md:px-5 md:font-semibold'>Play Again</button>
             </div>
             :
-            <button onClick={checkAnswer} className='p-2 bg-[#293264] text-sm rounded-lg font-[400] text-white md:p-3 md:font-semibold'>Check Answer</button>
-
+            <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+            md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
           }
+
         </div>
 
       }

@@ -14,7 +14,7 @@ const StartPage = (props) => {
 
             <UserSelectForm />
 
-            <button onClick={props.startFunction} className='bg-[#293264] py-2 px-3 text-white font-[400] text-sm rounded-md w-fit md:text-lg  hover:bg-sky-900'>Start Quiz</button>
+            <button onClick={props.startFunction} className='bg-[#293264] py-2 px-3 shadow-[#293264] shadow-md text-white font-[400] text-sm rounded-md w-fit md:text-lg  hover:bg-sky-900'>Start Quiz</button>
 
         </div >
     );
