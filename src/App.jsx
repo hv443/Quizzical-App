@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import QuizPage from './components/QuizPage'
 import StartPage from './components/StartPage'
@@ -15,13 +15,16 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [restartGame, setRestartGame] = useState(false)
   const [score, setScore] = useState(0)
-  const [API_URL, setAPI_URL] = useState('https://opentdb.com/api.php?amount=5')
+  const [API_URL, setAPI_URL] = useState()
   // const [selectAllOptions, setSelectAllOptions] = useState(0)
+
+  // To stop first Render
+  const firstRender = useRef(false)
 
   function startQuiz() {
     setStart(pre => !pre)
-    const url = localStorage.getItem("URL")
-    setAPI_URL(url)
+    const userSelect = localStorage.getItem("URL")
+    setAPI_URL(userSelect)
   }
 
 
@@ -32,21 +35,24 @@ function App() {
     setData(false)
   }
 
-  // async function getData() {
-  //   const response = await fetch(API_URL)
-  //   const resData = await response.json();
-  //   setData(quizData(resData.results))
-  // }
+  function back() {
+    setStart(pre => !pre)
+  }
+
 
   useEffect(() => {
-    fetch(API_URL)
-      .then(res => res.json())
-      .then(e => {
-        setData(quizData(e.results))
-      })
-    // getData();
-  }, [restartGame])
+    if (firstRender.current) {
+      fetch(API_URL)
+        .then(res => res.json())
+        .then(e => {
+          setData(quizData(e.results))
+        })
+    } else {
+      firstRender.current = true
+    }
+  }, [restartGame, start])
 
+  console.log(data)
 
   function quizData(elements) {
     return elements.map((data) =>
@@ -182,6 +188,13 @@ function App() {
             data ?
               <div className='min-h-screen min-w-full p-4 flex items-center justify-center flex-col space-y-2'>
 
+                {start &&
+                  <div className='w-[95%] md:max-w-4xl'>
+                    <button onClick={back} className='py-2 px-3 mb-5 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                        md:px-5 md:py-3 md:font-semibold'>Back</button>
+                  </div>
+                }
+
                 <QuizPage elements={data}
                   selectOption={optionClicked}
                   isplaying={isPlaying}
@@ -193,11 +206,11 @@ function App() {
                       <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
                     </div>
                     <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-              md:p-4 md:px-5 md:font-semibold'>Play Again</button>
+                      md:p-4 md:px-5 md:font-semibold'>Play Again</button>
                   </div>
                   :
                   <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-            md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
+                     md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
                 }
 
               </div>

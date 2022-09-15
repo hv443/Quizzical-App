@@ -5,7 +5,7 @@ import UserSelectForm from './FormSelect';
 const StartPage = (props) => {
     return (
 
-        <div className='min-h-screen  text-[#293264] grid place-items-center place-content-center text-center gap-3'>
+        <div className='min-h-screen  text-[#293264] grid place-items-center place-content-center  gap-3'>
 
             <div>
                 <h1 className='font-semibold text-3xl tracking-wider md:text-4xl'>Quizzical</h1>
