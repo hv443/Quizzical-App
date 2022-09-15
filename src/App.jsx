@@ -152,7 +152,10 @@ function App() {
   }
 
   return (
-    <div className="font-[inter] bg-gray-50">
+    <div className="font-[inter] min-h-screen relative z-0 bg-gray-50">
+
+      <img src="./img/blob 5.png" alt="bgimg" className='-z-10 absolute right-0 top-0 w-[20%]' />
+      <img src="./img/blob 5 (1).png" alt="bgimg" className='-z-10 absolute left-0 bottom-0 w-[20%]' />
 
       {!start
         ?
