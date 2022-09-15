@@ -15,10 +15,13 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [restartGame, setRestartGame] = useState(false)
   const [score, setScore] = useState(0)
+  const [API_URL, setAPI_URL] = useState('https://opentdb.com/api.php?amount=5')
   // const [selectAllOptions, setSelectAllOptions] = useState(0)
 
   function startQuiz() {
     setStart(pre => !pre)
+    const url = localStorage.getItem("URL")
+    setAPI_URL(url)
   }
 
 
@@ -30,18 +33,17 @@ function App() {
   }
 
   // async function getData() {
-  //   const response = await fetch('https://opentdb.com/api.php?amount=5')
+  //   const response = await fetch(API_URL)
   //   const resData = await response.json();
   //   setData(quizData(resData.results))
   // }
 
   useEffect(() => {
-    fetch('https://opentdb.com/api.php?amount=5')
+    fetch(API_URL)
       .then(res => res.json())
       .then(e => {
         setData(quizData(e.results))
       })
-
     // getData();
   }, [restartGame])
 

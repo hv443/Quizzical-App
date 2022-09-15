@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-const UserSelectForm = () => {
+const FormSelect = (props) => {
 
     const [formData, setFormData] = useState({
-        category: '',
-        difficulty: '',
-        type: ''
+        category: '9',
+        difficulty: 'easy',
+        type: 'multiple'
     })
 
 
-    const API_URL = `"https://opentdb.com/api.php?amount=5&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.type}"`
+    const API_URL = `https://opentdb.com/api.php?amount=5&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.type}`
 
     function handleClick(event) {
 
@@ -21,11 +21,13 @@ const UserSelectForm = () => {
         }))
     }
 
+    function setURL() {
+        localStorage.setItem("URL", API_URL)
+    }
 
-    console.log(API_URL)
 
     return (
-        <div>
+        <div onClick={setURL} >
             <h1 className='font-semibold text-xl mb-4'>Select what types of question you want</h1>
             <div>
                 <label htmlFor="category">Select Category :</label>
@@ -55,8 +57,9 @@ const UserSelectForm = () => {
                     <option value="medium">Medium</option>
                 </select>
             </div>
+
         </div>
     );
 }
 
-export default UserSelectForm;
+export default FormSelect;
