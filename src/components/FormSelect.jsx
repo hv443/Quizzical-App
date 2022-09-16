@@ -21,8 +21,6 @@ const FormSelect = () => {
         }))
     }
 
-    console.log(API_URL)
-
     useEffect(() => {
         localStorage.setItem("URL", API_URL)
     }, [formData]);

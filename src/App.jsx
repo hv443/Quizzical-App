@@ -16,7 +16,7 @@ function App() {
   const [restartGame, setRestartGame] = useState(false)
   const [score, setScore] = useState(0)
   const [API_URL, setAPI_URL] = useState()
-  // const [selectAllOptions, setSelectAllOptions] = useState(0)
+  // const [count, setCount] = useState(0)
 
   // To stop first Render
   const firstRender = useRef(false)
@@ -51,7 +51,6 @@ function App() {
           setData(quizData(e.results))
           setLoading(pre => !pre)
         })
-      console.log(data)
     } else {
       firstRender.current = true
     }
@@ -68,9 +67,21 @@ function App() {
     }))
   }
 
+  // function selectAllOptions(questionId) {
+  //   data.map(allElements => {
+  //     if (questionId === allElements.id) {
+  //       allElements.options.map(option => {
+  //         if (option.isHeld) {
+  //           setCount(pre => pre + 1)
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
 
   function optionClicked(clickId, questionId) {
     setData(data.map(allElements => {
+
       if (allElements.id === questionId) {
 
         const elementData = allElements.options.map(option => {
@@ -97,32 +108,15 @@ function App() {
       } else {
         return allElements
       }
-
     }))
   }
-
-
-  // function select() {
-  //   setData(data.map(allElements => {
-  //     allElements.options.map(option => {
-  //       if (option.isHeld) {
-  //         setSelectAllOptions(pre => pre + 1)
-  //         console.log(selectAllOptions)
-  //         return ({
-  //           ...option
-  //         })
-  //       }
-  //       return { ...option }
-  //     })
-  //     return { ...allElements }
-  //   }))
-  // }
 
   function checkAnswer() {
 
     setIsPlaying(pre => !pre)
 
     setData(data.map(allElements => {
+
       const optionslist = allElements.options.map(option => {
 
         if (option.isCorrect && option.isHeld) {
@@ -162,6 +156,7 @@ function App() {
       })
     }))
   }
+
 
   function setOptions(allOptions, correctAnswer) {
     return allOptions.map(option => {
@@ -212,14 +207,20 @@ function App() {
                 {isPlaying ?
                   <div className='flex items-center justify-center flex-col space-y-2 md:flex-row'>
                     <div className='font-semibold text-xl text-gray-900 mr-5'>
+
                       <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
+
                     </div>
                     <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
                     md:p-4 md:px-5 md:font-semibold'>Play Again</button>
                   </div>
                   :
-                  <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                   md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
+                  <div>
+
+                    <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                        md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
+
+                  </div>
                 }
 
               </div>

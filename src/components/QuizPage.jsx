@@ -33,7 +33,7 @@ const QuizPage = (props) => {
                             : "cursor-pointer"} 
 
                               md:text-sm text-sm font-[Karla] duration-300
-                            font-[500] border mr-3 mb-3 md:mr-5
+                            font-[00] border mr-3 mb-3 md:mr-5
                              text=[#4d5d9e] text-center py-2 px-4 rounded-md
                              md:px-8 `}>{decode(option.value)}</button>
             )
