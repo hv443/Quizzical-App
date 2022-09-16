@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import QuizPage from './components/QuizPage'
 import StartPage from './components/StartPage'
@@ -6,29 +6,32 @@ import { nanoid } from 'nanoid'
 import LoadingScreen from './components/LoadingScreen'
 import topBg from "../assets/blob T.png"
 import bottomBg from "../assets/blob B.png"
+import QuizForm from './components/QuizForm'
 
 
 function App() {
 
-  const [start, setStart] = useState(false)
+  const [start, setStart] = useState(true)
   const [data, setData] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [restartGame, setRestartGame] = useState(false)
+  const [isForm, setIsForm] = useState(true)
   const [score, setScore] = useState(0)
-  const [API_URL, setAPI_URL] = useState()
+  const [API_URL, setAPI_URL] = useState('falsecsd')
   // const [count, setCount] = useState(0)
 
   // To stop first Render
-  const firstRender = useRef(false)
 
   const [loading, setLoading] = useState(true)
 
   function startQuiz() {
     setStart(pre => !pre)
-    const userSelect = localStorage.getItem("URL")
-    setAPI_URL(userSelect)
   }
 
+  function createQuiz(URL) {
+    setAPI_URL(URL)
+    setIsForm(pre => !pre)
+  }
 
   function newGame() {
     setRestartGame(pre => !pre)
@@ -39,22 +42,19 @@ function App() {
   }
 
   function back() {
-    setStart(pre => !pre)
+    setIsForm(pre => !pre)
   }
 
-
   useEffect(() => {
-    if (firstRender.current) {
-      fetch(API_URL)
-        .then(res => res.json())
-        .then(e => {
-          setData(quizData(e.results))
-          setLoading(pre => !pre)
-        })
-    } else {
-      firstRender.current = true
-    }
-  }, [restartGame, start])
+
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(e => {
+        setData(quizData(e.results))
+        setLoading(pre => !pre)
+      })
+
+  }, [restartGame, isForm])
 
 
   function quizData(elements) {
@@ -177,62 +177,70 @@ function App() {
       <img src={topBg} alt="bgimg" className='-z-10 absolute right-0 top-0 w-[30%] md:w-[25%]' />
       <img src={bottomBg} alt="bgimg" className='-z-10 absolute left-0 bottom-0 w-[30%] md:w-[25%]' />
 
-      {!start
-        ?
-        <StartPage startFunction={startQuiz} />
-        :
+      {
+        start
+          ?
+          <StartPage startFunction={startQuiz} />
+          :
+          isForm
+            ?
+            <QuizForm createQuiz={createQuiz} backBtn={startQuiz} />
+            :
 
-        <div>
-          {
-            loading ?
+            <div>
 
-              <LoadingScreen />
-
-              :
-
-              <div className='min-h-screen min-w-full p-4 flex items-center justify-center flex-col space-y-2'>
-
-                {start &&
-                  <div className='w-[95%] md:max-w-4xl'>
-                    <button onClick={back} className='py-2 px-3 mb-5 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                      md:px-5 md:py-3 md:font-semibold'>Back</button>
-                  </div>
-                }
-
-                <QuizPage elements={data}
-                  selectOption={optionClicked}
-                  isplaying={isPlaying}
-                />
-
-                {isPlaying ?
-                  <div className='flex items-center justify-center flex-col space-y-2 md:flex-row'>
-                    <div className='font-semibold text-xl text-gray-900 mr-5'>
-
-                      <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
-
-                    </div>
-                    <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                    md:p-4 md:px-5 md:font-semibold'>Play Again</button>
-                  </div>
+              {
+                loading ?
+                  <LoadingScreen />
                   :
-                  <div>
 
-                    <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                        md:p-4 md:px-5 md:font-semibold'>Check Answer</button>
+                  <div className='min-h-screen min-w-full p-4 flex items-center justify-center flex-col space-y-2'>
+
+
+                    <div className='w-[95%] md:max-w-4xl'>
+                      <button onClick={back} className='py-2 px-3 mb-5 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                        md:px-5 md:py-3 md:font-semibold hover:scale-95 duration-100'>Back</button>
+                    </div>
+
+
+                    <QuizPage elements={data}
+                      selectOption={optionClicked}
+                      isplaying={isPlaying}
+                    />
+
+                    {
+                      isPlaying ?
+
+                        <div className='flex items-center justify-center flex-col space-y-2 md:flex-row'>
+                          <div className='font-semibold text-xl text-gray-900 mr-5'>
+
+                            <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
+
+                          </div>
+                          <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                           md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Play Again</button>
+                        </div>
+                        :
+                        <div>
+
+                          <button onClick={checkAnswer} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                          md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
+
+                        </div>
+                    }
+
 
                   </div>
-                }
 
-              </div>
-
-          }
-        </div>
+              }
 
 
+
+            </div>
 
       }
-
     </div >
+
   )
 }
 
