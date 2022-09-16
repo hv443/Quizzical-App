@@ -23,10 +23,10 @@ const QuizForm = (props) => {
 
 
     return (
-        <div className='text-sm p-2 md:text-base w-full min-h-screen flex justify-center items-center flex-col'>
+        <div className='text-sm p-2 md:text-base w-full min-h-screen flex justify-center items-center text-center flex-col'>
             <h1 className='font-bold text-4xl text-[#293264] mb-4 text-center'>Create Quiz</h1>
             <p className='text-[#293264] font-medium text-lg'>Select what Types of Questions you want</p>
-            <div className='space-y-4 rounded-2xl p-5  shadow-2xl shadow-blue-200'>
+            <div className='space-y-4 rounded-2xl p-5 text-left shadow-2xl shadow-blue-200'>
                 <div>
                     <label htmlFor="amount" className='font-semibold text-gray-700 mr-2'>No of Questions :</label>
                     <input className='bg-gray-200 p-2 rounded-md w-20 outline-none' type="number" min="5" max="50" name="amount" id="no" value={formData.amount} onChange={handleClick} />
@@ -34,7 +34,7 @@ const QuizForm = (props) => {
 
                 <div>
                     <label htmlFor="category" className='font-semibold mr-2 text-gray-700'>Select Category :</label>
-                    <select className='p-2 bg-gray-200 rounded-md max-w-[60%]' name='category' onChange={handleClick}>
+                    <select className='p-2 bg-gray-200 rounded-md max-w-[50%]' name='category' onChange={handleClick}>
                         <option value="">All category</option>
                         <option value="9">General Knowledge</option>
                         <option value="10">Entertainment: Books</option>

@@ -194,7 +194,7 @@ function App() {
                   <LoadingScreen />
                   :
 
-                  <div className='min-h-screen min-w-full p-4 flex items-center justify-center flex-col space-y-2'>
+                  <div className='min-h-screen min-w-full p-2 flex items-center justify-center flex-col space-y-2'>
 
 
                     <div className='w-[95%] md:max-w-4xl'>
