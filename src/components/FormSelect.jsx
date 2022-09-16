@@ -6,7 +6,7 @@ const FormSelect = () => {
         category: '',
         difficulty: '',
         type: '',
-        amount: 5
+        amount: "5"
     })
 
     // https://opentdb.com/api.php?amount=10
