@@ -28,7 +28,7 @@ const QuizPage = (props) => {
             return (
                 <button key={id} onClick={() => { props.selectOption(option.id, allElements.id) }}
                     className={` ${optionBgColor} 
-                        ${props.isplaying ?
+                        ${!props.isplaying ?
                             "cursor-not-allowed"
                             : "cursor-pointer"} 
 

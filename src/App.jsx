@@ -13,7 +13,7 @@ function App() {
 
   const [start, setStart] = useState(true)
   const [data, setData] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
   const [restartGame, setRestartGame] = useState(false)
   const [isForm, setIsForm] = useState(true)
   const [score, setScore] = useState(0)
@@ -35,7 +35,7 @@ function App() {
 
   function newGame() {
     setRestartGame(pre => !pre)
-    setIsPlaying(pre => !pre)
+    setIsPlaying(true)
     setLoading(pre => !pre)
     setScore(0)
     setData(false)
@@ -43,7 +43,7 @@ function App() {
 
   function back() {
     setIsForm(pre => !pre)
-    setIsPlaying(pre => !pre)
+    setIsPlaying(true)
   }
 
   useEffect(() => {
@@ -198,7 +198,7 @@ function App() {
                     />
 
                     {
-                      isPlaying ?
+                      !isPlaying ?
 
                         <div className='flex items-center justify-center py-5 flex-col md:flex-row'>
                           <div className='font-semibold text-xl text-gray-900 mr-5'>
