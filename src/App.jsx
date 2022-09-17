@@ -201,7 +201,7 @@ function App() {
                   <LoadingScreen />
                   :
 
-                  <div className='min-h-screen min-w-full p-3 flex items-center justify-center flex-col space-y-2'>
+                  <div className='min-h-screen min-w-full p-1 flex items-center justify-center flex-col space-y-2'>
 
                     <div className='w-[95%] md:max-w-4xl'>
                       <button onClick={backFunction} className='py-2 px-3 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
