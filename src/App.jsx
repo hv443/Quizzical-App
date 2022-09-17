@@ -17,12 +17,16 @@ function App() {
   const [restartGame, setRestartGame] = useState(false)
   const [isForm, setIsForm] = useState(true)
   const [score, setScore] = useState(0)
+  const [isAllAnswerSelected, setIsAllAnswerSelected] = useState(true)
   const [API_URL, setAPI_URL] = useState("https://opentdb.com/api.php?amount=10")
+  const [count, setCount] = useState(0)
+  const [loading, setLoading] = useState(true)
 
   // To stop first Render
   const firstRender = useRef(false)
 
-  const [loading, setLoading] = useState(true)
+
+  console.log(count)
 
   function startQuiz() {
     setStart(pre => !pre)
@@ -39,11 +43,21 @@ function App() {
     setLoading(pre => !pre)
     setScore(0)
     setData(false)
+    setIsAllAnswerSelected(true)
   }
 
-  function back() {
+  function backFunction() {
     setIsForm(pre => !pre)
     setIsPlaying(true)
+    setIsAllAnswerSelected(true)
+  }
+
+  function allAnswerSelected() {
+    if (data.length != count) {
+      setIsAllAnswerSelected(false)
+    } else {
+      setIsAllAnswerSelected(true)
+    }
   }
 
   useEffect(() => {
@@ -53,12 +67,12 @@ function App() {
         .then(e => {
           setData(quizData(e.results))
           setLoading(pre => !pre)
+          setCount(0)
         })
     } else {
       firstRender.current = true
     }
   }, [restartGame, isForm])
-
 
   function quizData(elements) {
     return elements.map((data) =>
@@ -75,6 +89,14 @@ function App() {
     setData(data.map(allQuiz => {
       if (allQuiz.id === questionId) {
         const elementData = allQuiz.options.map(option => {
+
+          if (!option.isHeld && option.id === clickId) {
+            setCount(pre => pre + 1)
+          }
+          else if (option.isHeld) {
+            setCount(pre => pre - 1)
+          }
+
           if (option.id === clickId) {
             return ({
               ...option,
@@ -110,9 +132,7 @@ function App() {
       const optionslist = allQuiz.options.map(option => {
 
         if (option.isCorrect && option.isHeld) {
-
           setScore(pre => pre + 1)
-
           return ({
             ...option,
             isCorrectAnswer: true
@@ -187,7 +207,7 @@ function App() {
                   <div className='min-h-screen min-w-full p-2 flex items-center justify-center flex-col space-y-2'>
 
                     <div className='w-[95%] md:max-w-4xl'>
-                      <button onClick={back} className='py-2 px-3 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                      <button onClick={backFunction} className='py-2 px-3 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
                         md:px-5 md:py-3 md:font-semibold hover:scale-95 duration-100'>Back</button>
                     </div>
 
@@ -198,7 +218,7 @@ function App() {
                     />
 
                     {
-                      !isPlaying ?
+                      !isPlaying && count === data.length ?
 
                         <div className='flex items-center justify-center py-5 flex-col md:flex-row'>
                           <div className='font-semibold text-xl text-gray-900 mr-5'>
@@ -207,15 +227,22 @@ function App() {
 
                           </div>
                           <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                           md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Play Again</button>
+                               md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Play Again</button>
                         </div>
-                        :
-                        <div className='py-5'>
+                        : !isAllAnswerSelected ?
 
-                          <button onClick={checkAnswer} className='py-3 px-4  shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                          md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
-
-                        </div>
+                          <div className='py-5 flex items-center justify-start space-x-5'>
+                            {data.length === count ? '' :
+                              <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>Please Attend All Questions</h1>
+                            }
+                            <button onClick={data.length === count ? checkAnswer : allAnswerSelected} className='py-3 px-4  shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                             md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
+                          </div>
+                          :
+                          <div className='py-5'>
+                            <button onClick={count === data.length ? checkAnswer : allAnswerSelected} className='py-3 px-4  shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
+                              md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
+                          </div>
                     }
 
 
