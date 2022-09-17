@@ -14,13 +14,12 @@ const QuizForm = (props) => {
     const API_URL = `https://opentdb.com/api.php?amount=${formData.amount}&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.type}`
 
     function handleClick(event) {
-        const { name, value } = event.target
+        const { name, value, type } = event.target
         setFormData(preFormData => ({
             ...preFormData,
-            [name]: value
+            [name]: type == "text" ? value.replace(/\D/g, '') : value
         }))
     }
-
 
     return (
         <div className='text-sm p-2 md:text-base w-full min-h-screen flex justify-center items-center text-center flex-col'>
@@ -29,7 +28,7 @@ const QuizForm = (props) => {
             <div className='space-y-4 rounded-2xl p-5 text-left shadow-2xl shadow-blue-200'>
                 <div>
                     <label htmlFor="amount" className='font-semibold text-gray-700 mr-2'>No of Questions :</label>
-                    <input className='bg-gray-200 p-2 rounded-md w-20 outline-none' type="number" min="5" max="50" name="amount" id="no" value={formData.amount} onChange={handleClick} />
+                    <input className='bg-gray-200 p-2 rounded-md text-center w-20 outline-none' type="text" min="5" max="50" name="amount" id="no" value={formData.amount} onChange={handleClick} />
                 </div>
 
                 <div>
