@@ -23,9 +23,9 @@ const QuizForm = (props) => {
 
     return (
         <div className='text-sm p-2 md:text-base w-full min-h-screen flex justify-center items-center text-center flex-col'>
-            <h1 className='font-bold text-4xl text-[#293264] mb-4 text-center'>Create Quiz</h1>
-            <p className='text-[#293264] font-medium text-lg'>Select what Types of Questions you want</p>
-            <div className='space-y-4 rounded-2xl p-5 text-left shadow-2xl shadow-blue-200'>
+            <h1 className='font-semibold text-3xl text-[#293264] mb-2 text-center'>Create Quiz</h1>
+            <p className='text-[#293264] mb-4 font-medium text-lg'>Select what Types of Questions you want</p>
+            <div className=' space-y-4 max-w-[90%] rounded-2xl p-5 text-left shadow-2xl shadow-blue-500'>
                 <div>
                     <label htmlFor="amount" className='font-semibold text-gray-700 mr-2'>No of Questions :</label>
                     <input className='bg-gray-200 p-2 rounded-md text-center w-20 outline-none' type="text" min="5" max="50" name="amount" id="no" value={formData.amount} onChange={handleClick} />

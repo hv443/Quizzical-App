@@ -25,9 +25,6 @@ function App() {
   // To stop first Render
   const firstRender = useRef(false)
 
-
-  console.log(count)
-
   function startQuiz() {
     setStart(pre => !pre)
   }
@@ -204,7 +201,7 @@ function App() {
                   <LoadingScreen />
                   :
 
-                  <div className='min-h-screen min-w-full p-2 flex items-center justify-center flex-col space-y-2'>
+                  <div className='min-h-screen min-w-full p-3 flex items-center justify-center flex-col space-y-2'>
 
                     <div className='w-[95%] md:max-w-4xl'>
                       <button onClick={backFunction} className='py-2 px-3 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
@@ -223,7 +220,7 @@ function App() {
                         <div className='flex items-center justify-center py-5 flex-col md:flex-row'>
                           <div className='font-semibold text-xl text-gray-900 mr-5'>
 
-                            <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>You scored {score}/{data.length} correct answers</h1>
+                            <h1 className='font-semibold text-blue-900 text-sm mb-3 md:mb-0 md:text-xl'>You scored {score}/{data.length} correct answers</h1>
 
                           </div>
                           <button onClick={newGame} className='py-3 px-4 shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
@@ -231,9 +228,9 @@ function App() {
                         </div>
                         : !isAllAnswerSelected ?
 
-                          <div className='py-5 flex items-center justify-start space-x-5'>
+                          <div className='py-5 flex flex-col md:flex-row items-center justify-start space-x-5'>
                             {data.length === count ? '' :
-                              <h1 className='font-semibold text-blue-900 text-sm md:text-xl'>Please Attend All Questions</h1>
+                              <h1 className='font-semibold text-blue-900 text-sm mb-3 md:mb-0 md:text-xl'>Please Attend All Questions</h1>
                             }
                             <button onClick={data.length === count ? checkAnswer : allAnswerSelected} className='py-3 px-4  shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
                              md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
