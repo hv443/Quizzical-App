@@ -228,17 +228,17 @@ function App() {
                         </div>
                         : !isAllAnswerSelected ?
 
-                          <div className='py-5 flex flex-col md:flex-row items-center justify-start space-x-5'>
-                            {data.length === count ? '' :
+                          <div className='py-5 flex flex-col md:flex-row items-center justify-start md:space-x-5'>
+                            {!(data.length === count) &&
                               <h1 className='font-semibold text-blue-900 text-sm mb-3 md:mb-0 md:text-xl'>Please Attend All Questions</h1>
                             }
                             <button onClick={data.length === count ? checkAnswer : allAnswerSelected} className='py-3 px-4  shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                             md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
+                             md:py-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
                           </div>
                           :
                           <div className='py-5'>
                             <button onClick={count === data.length ? checkAnswer : allAnswerSelected} className='py-3 px-4  shadow-[#293264] shadow-md bg-[#293264] text-sm rounded-lg font-[400] text-white 
-                              md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
+                              md:py-4 md:px-5 md:font-semibold hover:scale-95 duration-100'>Check Answer</button>
                           </div>
                     }
 
