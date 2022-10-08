@@ -257,7 +257,7 @@ function App() {
                   </button>
                 </div>
               ) : (
-                <div className="py-5">
+                <div className="py-3">
                   <button
                     onClick={
                       count === data.length ? checkAnswer : allAnswerSelected
