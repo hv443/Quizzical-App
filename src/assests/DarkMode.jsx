@@ -4,7 +4,7 @@ const DarkMode = ({ darkMode, mode }) => {
   const active = mode ? "after:right-1" : "after:left-1";
 
   return (
-    <div className=" flex  items-center justify-center space-x-2 absolute top-4 right-10">
+    <div className=" flex items-center justify-center space-x-2">
       <div className="text-primary text-sm font-medium">Dark Mode</div>
       <div
         onClick={darkMode}

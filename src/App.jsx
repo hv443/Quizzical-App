@@ -181,8 +181,6 @@ function App() {
       className={`font-[inter] min-h-screen relative z-0 bg-theme
          ${darkMode && "dark"} `}
     >
-      {!start && <DarkMode darkMode={toggleDarkMode} mode={darkMode} />}
-
       <div className={darkMode && "hidden"}>
         <img
           src={topBg}
@@ -206,7 +204,7 @@ function App() {
             <LoadingScreen />
           ) : (
             <div className="min-h-screen min-w-full p-1 flex items-center justify-center flex-col space-y-2">
-              <div className="w-[95%] md:max-w-4xl">
+              <div className="w-full md:max-w-4xl p-2 md:p-0 flex justify-between items-center">
                 <button
                   onClick={backFunction}
                   className="py-2 px-3 shadow-primary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
@@ -214,6 +212,10 @@ function App() {
                 >
                   Back
                 </button>
+
+                {!start && (
+                  <DarkMode darkMode={toggleDarkMode} mode={darkMode} />
+                )}
               </div>
 
               <QuizPage
