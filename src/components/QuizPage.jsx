@@ -54,7 +54,7 @@ const QuizPage = (props) => {
 
         <div>{options}</div>
 
-        <hr className="bg-gray-200 h-[1px] " />
+        <hr className="border-primary h-[1px] " />
       </div>
     );
   });

@@ -22,19 +22,23 @@ const QuizForm = (props) => {
 
   return (
     <div className="text-sm p-2 md:text-base w-full min-h-screen flex justify-center items-center text-center flex-col">
-      <h1 className="font-semibold text-3xl text-primary mb-2 text-center">
-        Create Quiz
-      </h1>
-      <p className="text-primary mb-4 font-medium text-lg">
-        Select what Types of Questions you want
-      </p>
-      <div className=" space-y-4 max-w-[90%] rounded-2xl p-5 text-left shadow-2xl shadow-primary">
+      <div>
+        <h1 className="font-semibold text-3xl text-primary mb-2 text-center">
+          Create Quiz
+        </h1>
+        <p className="text-primary mb-4 font-medium text-lg">
+          Select what Types of Questions you want
+        </p>
+        <hr className="border-primary  my-4" />
+      </div>
+
+      <div className="space-y-4 w-full rounded-2xl">
         <div>
           <label htmlFor="amount" className="font-semibold text-secondary mr-2">
             No of Questions :
           </label>
           <input
-            className="bg-primary text-theme p-2 rounded-md text-center w-20 outline-none"
+            className="bg-secondary text-theme p-2 rounded-md text-center w-20 outline-none"
             type="text"
             min="5"
             max="50"
@@ -53,7 +57,7 @@ const QuizForm = (props) => {
             Select Category :
           </label>
           <select
-            className="p-2 bg-primary text-theme rounded-md max-w-[50%]"
+            className="p-2 bg-secondary text-theme rounded-md max-w-[50%]"
             name="category"
             onChange={handleClick}
           >
@@ -92,7 +96,7 @@ const QuizForm = (props) => {
             Select Type :
           </label>
           <select
-            className="p-2 bg-primary text-theme rounded-md"
+            className="p-2 bg-secondary text-theme rounded-md"
             name="type"
             onChange={handleClick}
           >
@@ -110,7 +114,7 @@ const QuizForm = (props) => {
             Select Difficulty :
           </label>
           <select
-            className="p-2 bg-primary text-theme rounded-md"
+            className="p-2 bg-secondary text-theme rounded-md"
             name="difficulty"
             onChange={handleClick}
           >
@@ -120,26 +124,19 @@ const QuizForm = (props) => {
             <option value="hard">Hard</option>
           </select>
         </div>
+      </div>
 
-        <div className="flex justify-between items-center mt-5 w-f mx-auto">
-          <button
-            onClick={props.backBtn}
-            className="p-2  shadow-primary
-                    shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
-                     hover:scale-95 duration-100"
-          >
-            Back
-          </button>
+      <div className="grid place-content-center w-full mx-auto">
+        <hr className="border-primary my-4" />
 
-          <button
-            onClick={() => props.createQuiz(API_URL)}
-            className="py-3 px-4 shadow-primary
+        <button
+          onClick={() => props.createQuiz(API_URL)}
+          className="py-3  px-10 shadow-secondary
                     shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
                        hover:scale-95 duration-100"
-          >
-            Play Quiz
-          </button>
-        </div>
+        >
+          Play Quiz
+        </button>
       </div>
     </div>
   );

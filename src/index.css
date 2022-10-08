@@ -8,10 +8,10 @@
 :root {
   --primary:#4d5d9e;
   --secondary:#293264;
-  --hover:rgba(147, 196, 253, 1);
-  --active:rgba(20, 97, 198, .7);
-  --correct: rgba(74, 222, 128, 1);
-  --incorrect: rgba(252, 165, 165, 1);
+  --hover:rgba(147, 196, 253, .8);
+  --active:rgba(20, 97, 198, .4);
+  --correct: rgba(74, 222, 128, .8);
+  --incorrect: rgba(252, 165, 165, .8);
   --off:rgb(156 163 175);
   --theme:white;
 }
@@ -19,12 +19,12 @@
 .dark{
   --primary:hsla(0, 0%, 0%, 0.9);
   --secondary:rgb(9, 9, 44);
-  --hover:rgba(147, 196, 253, 0.5);
-  --active:rgba(20, 97, 198, 0.5);
+  --active:rgba(147, 196, 253, .7);
+  --hover:rgba(20, 97, 198, .5);
   --correct: rgba(74, 222, 128, 0.5);
   --incorrect: rgba(252, 165, 165, 0.5);
   --off:rgb(88, 88, 88);
-  --theme:rgb(135, 138, 135);
+  --theme:rgb(148, 154, 148);
 }
 
 

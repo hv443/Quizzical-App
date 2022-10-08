@@ -178,7 +178,7 @@ function App() {
 
   return (
     <div
-      className={`font-[inter] min-h-screen relative z-0 bg-theme
+      className={`font-[inter] min-h-screen relative z-0 bg-theme transition-all
          ${darkMode && "dark"} `}
     >
       <div className={darkMode && "hidden"}>
@@ -197,7 +197,7 @@ function App() {
       {start ? (
         <StartPage startFunction={startQuiz} />
       ) : isForm ? (
-        <QuizForm createQuiz={createQuiz} backBtn={startQuiz} />
+        <QuizForm createQuiz={createQuiz} />
       ) : (
         <div>
           {loading ? (
@@ -207,7 +207,7 @@ function App() {
               <div className="w-full md:max-w-4xl p-2 md:p-0 flex justify-between items-center">
                 <button
                   onClick={backFunction}
-                  className="py-2 px-3 shadow-primary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
+                  className="py-2 px-3 shadow-secondary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
                         md:px-5 md:py-3 md:font-semibold hover:scale-95 duration-100"
                 >
                   Back
@@ -233,7 +233,7 @@ function App() {
                   </div>
                   <button
                     onClick={newGame}
-                    className="py-3 px-4 shadow-primary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
+                    className="py-3 px-4 shadow-secondary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
                                md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100"
                   >
                     Play Again
@@ -250,7 +250,7 @@ function App() {
                     onClick={
                       data.length === count ? checkAnswer : allAnswerSelected
                     }
-                    className="py-3 px-4  shadow-primary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
+                    className="py-3 px-4  shadow-secondary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
                              md:py-4 md:px-5 md:font-semibold hover:scale-95 duration-100"
                   >
                     Check Answer
@@ -262,7 +262,7 @@ function App() {
                     onClick={
                       count === data.length ? checkAnswer : allAnswerSelected
                     }
-                    className="py-3 px-4  shadow-primary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
+                    className="py-3 px-4  shadow-secondary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
                               md:py-4 md:px-5 md:font-semibold hover:scale-95 duration-100"
                   >
                     Check Answer
