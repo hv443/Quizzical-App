@@ -2,20 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-.spinner {
-  width: 24px;
-  height: 24px;
-  border: 3px solid;
-  border-color: #293264 transparent #293264 transparent;
-  border-radius: 50%;
-  animation: spin-anim 1.2s linear infinite;
+
+
+  
+:root {
+  --primary:#4d5d9e;
+  --secondary:#293264;
+  --hover:rgba(147, 196, 253, 1);
+  --active:rgba(20, 97, 198, .7);
+  --correct: rgba(74, 222, 128, 1);
+  --incorrect: rgba(252, 165, 165, 1);
+  --off:rgb(156 163 175);
+  --theme:white;
 }
 
-@keyframes spin-anim {
+.dark{
+  --primary:hsla(0, 0%, 0%, 0.9);
+  --secondary:rgb(9, 9, 44);
+  --hover:rgba(147, 196, 253, 0.5);
+  --active:rgba(20, 97, 198, 0.5);
+  --correct: rgba(74, 222, 128, 0.5);
+  --incorrect: rgba(252, 165, 165, 0.5);
+  --off:rgb(88, 88, 88);
+  --theme:rgb(135, 138, 135);
+}
+
+
+
+/* loading animation */
+
+.lds {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: var(--primary);
+  animation: lds 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds {
   0% {
-    transform: rotate(0deg);
+    top: 8px;
+    height: 64px;
   }
+  50%,
   100% {
-    transform: rotate(360deg);
+    top: 24px;
+    height: 32px;
   }
 }
