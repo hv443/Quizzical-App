@@ -225,7 +225,7 @@ function App() {
               />
 
               {!isPlaying && count === data.length ? (
-                <div className="flex items-center justify-center py-5 flex-col md:flex-row">
+                <div className="flex items-center justify-center md:py-5 py-3 flex-col md:flex-row">
                   <div className="font-semibold text-xl mr-5">
                     <h1 className="font-semibold text-primary text-sm mb-3 md:mb-0 md:text-xl">
                       You scored {score}/{data.length} correct answers
@@ -240,7 +240,7 @@ function App() {
                   </button>
                 </div>
               ) : !isAllAnswerSelected ? (
-                <div className="md:py-5 pb-5  flex flex-col md:flex-row items-center justify-start md:space-x-5">
+                <div className="md:py-5 py-3 flex flex-col md:flex-row items-center justify-start md:space-x-5">
                   {!(data.length === count) && (
                     <h1 className="font-semibold text-primary text-sm mb-3 md:mb-0 md:text-xl">
                       Please Attend All Questions

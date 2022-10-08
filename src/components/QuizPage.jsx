@@ -63,7 +63,7 @@ const QuizPage = (props) => {
   });
 
   return (
-    <div className=" md:max-w-4xl rounded-2xl  p-5 md:shadow-2xl md:shadow-primary ">
+    <div className=" md:max-w-4xl rounded-2xl md:p-5 px-5 md:shadow-2xl md:shadow-primary ">
       {quizes}
     </div>
   );
