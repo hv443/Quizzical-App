@@ -240,7 +240,7 @@ function App() {
                   </button>
                 </div>
               ) : !isAllAnswerSelected ? (
-                <div className="py-5 flex flex-col md:flex-row items-center justify-start md:space-x-5">
+                <div className="md:py-5 pb-5  flex flex-col md:flex-row items-center justify-start md:space-x-5">
                   {!(data.length === count) && (
                     <h1 className="font-semibold text-primary text-sm mb-3 md:mb-0 md:text-xl">
                       Please Attend All Questions
