@@ -9,8 +9,7 @@ const DarkMode = ({ darkMode, mode }) => {
       <div
         onClick={darkMode}
         className={`w-12 h-6 bg-primary duration-500 after:duration-500 rounded-xl overflow-hidden relative
-        after:h-4 after:rounded-full after:top-1/2 after:-translate-y-1/2 after:w-4 after:bg-theme after:z-10 after:absolute ${active}`}
-      ></div>
+        after:h-4 after:rounded-full after:top-1/2 after:-translate-y-1/2 after:w-4 after:bg-theme after:z-10 after:absolute ${active}`}></div>
     </div>
   );
 };

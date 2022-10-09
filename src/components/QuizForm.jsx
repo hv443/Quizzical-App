@@ -52,15 +52,13 @@ const QuizForm = (props) => {
         <div>
           <label
             htmlFor="category"
-            className="font-semibold mr-2 text-secondary"
-          >
+            className="font-semibold mr-2 text-secondary">
             Select Category :
           </label>
           <select
             className="p-2 bg-secondary text-theme rounded-md max-w-[50%]"
             name="category"
-            onChange={handleClick}
-          >
+            onChange={handleClick}>
             <option value="">All category</option>
             <option value="9">General Knowledge</option>
             <option value="10">Entertainment: Books</option>
@@ -98,8 +96,7 @@ const QuizForm = (props) => {
           <select
             className="p-2 bg-secondary text-theme rounded-md"
             name="type"
-            onChange={handleClick}
-          >
+            onChange={handleClick}>
             <option value="">Any Type</option>
             <option value="multiple">Multiple choice</option>
             <option value="boolean">True/False</option>
@@ -109,15 +106,13 @@ const QuizForm = (props) => {
         <div>
           <label
             htmlFor="difficulty"
-            className="font-semibold text-secondary mr-2"
-          >
+            className="font-semibold text-secondary mr-2">
             Select Difficulty :
           </label>
           <select
             className="p-2 bg-secondary text-theme rounded-md"
             name="difficulty"
-            onChange={handleClick}
-          >
+            onChange={handleClick}>
             <option value="">Any</option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
@@ -133,8 +128,7 @@ const QuizForm = (props) => {
           onClick={() => props.createQuiz(API_URL)}
           className="py-3  px-10 shadow-secondary
                     shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
-                       hover:scale-95 duration-100"
-        >
+                       hover:scale-95 duration-100">
           Play Quiz
         </button>
       </div>

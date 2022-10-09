@@ -37,8 +37,7 @@ const QuizPage = (props) => {
                               md:text-sm text-sm font-[Karla] duration-300
                              border mr-3 mb-3 md:mr-5
                              text-secondary text-center py-2 px-4 rounded-md
-                             md:px-8 `}
-        >
+                             md:px-8 `}>
           {decode(option.value)}
         </button>
       );
@@ -47,8 +46,7 @@ const QuizPage = (props) => {
     return (
       <div
         key={id}
-        className="text-secondary space-y-4 mb-3 last-of-type:mb-0 max-w-4xl"
-      >
+        className="text-secondary space-y-4 mb-3 last-of-type:mb-0 max-w-4xl">
         <div className="mb-4">
           <h1 className="font-semibold text-m md:text-xl">
             {decode(questions)}
@@ -63,7 +61,7 @@ const QuizPage = (props) => {
   });
 
   return (
-    <div className=" md:max-w-4xl rounded-2xl md:p-5 px-5 md:shadow-2xl md:shadow-primary ">
+    <div className=" md:min-w-4xl rounded-2xl md:p-5 px-5 md:shadow-2xl md:shadow-primary ">
       {quizes}
     </div>
   );

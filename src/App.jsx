@@ -179,8 +179,7 @@ function App() {
   return (
     <div
       className={`font-[inter] min-h-screen relative z-0 bg-theme transition-all
-         ${darkMode && "dark"} `}
-    >
+         ${darkMode && "dark"} `}>
       <div className={darkMode && "hidden"}>
         <img
           src={topBg}
@@ -193,6 +192,12 @@ function App() {
           className="-z-20 absolute left-0 bottom-0 w-[30%] md:w-[25%]"
         />
       </div>
+
+      {isForm && (
+        <div className="absolute right-5 top-5 z-50">
+          <DarkMode darkMode={toggleDarkMode} mode={darkMode} />
+        </div>
+      )}
 
       {start ? (
         <StartPage startFunction={startQuiz} />
@@ -208,8 +213,7 @@ function App() {
                 <button
                   onClick={backFunction}
                   className="py-2 px-3 shadow-secondary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
-                        md:px-5 md:py-3 md:font-semibold hover:scale-95 duration-100"
-                >
+                    md:px-5 md:py-3 md:font-semibold hover:scale-95 duration-100">
                   Back
                 </button>
 
@@ -234,8 +238,7 @@ function App() {
                   <button
                     onClick={newGame}
                     className="py-3 px-4 shadow-secondary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
-                               md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100"
-                  >
+                               md:p-4 md:px-5 md:font-semibold hover:scale-95 duration-100">
                     Play Again
                   </button>
                 </div>
@@ -251,8 +254,7 @@ function App() {
                       data.length === count ? checkAnswer : allAnswerSelected
                     }
                     className="py-3 px-4  shadow-secondary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
-                             md:py-4 md:px-5 md:font-semibold hover:scale-95 duration-100"
-                  >
+                             md:py-4 md:px-5 md:font-semibold hover:scale-95 duration-100">
                     Check Answer
                   </button>
                 </div>
@@ -263,8 +265,7 @@ function App() {
                       count === data.length ? checkAnswer : allAnswerSelected
                     }
                     className="py-3 px-4  shadow-secondary shadow-md bg-primary text-sm rounded-lg font-[400] text-theme
-                              md:py-4 md:px-5 md:font-semibold hover:scale-95 duration-100"
-                  >
+                              md:py-4 md:px-5 md:font-semibold hover:scale-95 duration-100">
                     Check Answer
                   </button>
                 </div>
