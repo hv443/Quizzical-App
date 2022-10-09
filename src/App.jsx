@@ -178,7 +178,7 @@ function App() {
 
   return (
     <div
-      className={`font-[inter] min-h-screen relative z-0 bg-theme transition-all
+      className={`font-[inter] min-h-screen relative z-0 bg-theme transition-all duration-300
          ${darkMode && "dark"} `}>
       <div className={darkMode && "hidden"}>
         <img
