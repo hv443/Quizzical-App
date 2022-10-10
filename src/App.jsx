@@ -16,9 +16,7 @@ function App() {
   const [isForm, setIsForm] = useState(true);
   const [score, setScore] = useState(0);
   const [isAllAnswerSelected, setIsAllAnswerSelected] = useState(true);
-  const [API_URL, setAPI_URL] = useState(
-    "https://opentdb.com/api.php?amount=10"
-  );
+  const [API_URL, setAPI_URL] = useState();
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
@@ -32,6 +30,7 @@ function App() {
 
   function toggleDarkMode() {
     setDarkMode((pre) => !pre);
+    localStorage.setItem("dark", JSON.stringify(darkMode));
   }
 
   function createQuiz(URL) {
@@ -61,6 +60,11 @@ function App() {
       setIsAllAnswerSelected(true);
     }
   }
+
+  useEffect(() => {
+    const mode = JSON.parse(localStorage.getItem("dark"));
+    setDarkMode(!mode);
+  }, []);
 
   useEffect(() => {
     if (firstRender.current) {
@@ -180,7 +184,7 @@ function App() {
     <div
       className={`font-[inter] min-h-screen relative z-0 bg-theme transition-all duration-300
          ${darkMode && "dark"} `}>
-      <div className={darkMode && "hidden"}>
+      <div className={darkMode ? "hidden" : ""}>
         <img
           src={topBg}
           alt="bgimg"
@@ -246,7 +250,9 @@ function App() {
                 <div className="md:py-5 py-3 flex flex-col md:flex-row items-center justify-start md:space-x-5">
                   {!(data.length === count) && (
                     <h1 className="font-semibold text-primary text-sm mb-3 md:mb-0 md:text-xl">
-                      Please Attend All Questions
+                      {`${data.length - count} ${
+                        data.length - count === 1 ? "Question" : "Questions"
+                      } Remaining`}
                     </h1>
                   )}
                   <button

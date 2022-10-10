@@ -1,7 +1,7 @@
 import React from "react";
 
 const DarkMode = ({ darkMode, mode }) => {
-  const active = mode ? "after:left-[56%]" : "after:left-[10%]";
+  const active = mode ? "after:translate-x-[170%]" : "after:translate-x-[30%]";
 
   return (
     <div className="flex items-center justify-center space-x-2">

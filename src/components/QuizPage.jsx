@@ -29,6 +29,7 @@ const QuizPage = (props) => {
             props.selectOption(option.id, allElements.id);
           }}
           className={` ${optionBgColor} 
+
                         ${
                           !props.isplaying
                             ? "cursor-not-allowed"
