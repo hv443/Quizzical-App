@@ -66,8 +66,8 @@ function App() {
     if (firstRender.current) {
       fetch(API_URL)
         .then((res) => res.json())
-        .then((e) => {
-          setData(quizData(e.results));
+        .then((data) => {
+          setData(quizData(data.results));
           setLoading((pre) => !pre);
           setCount(0);
         });
