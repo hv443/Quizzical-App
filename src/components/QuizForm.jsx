@@ -21,7 +21,7 @@ const QuizForm = (props) => {
   }
 
   return (
-    <div className="text-sm p-2 md:text-base w-full min-h-screen flex justify-center items-center text-center flex-col">
+    <div className="text-sm p-2 md:text-base w-full min-h-screen flex justify-center items-center text-center flex-col load-anim">
       <div>
         <h1 className="font-semibold text-3xl text-primary mb-2 text-center">
           Create Quiz

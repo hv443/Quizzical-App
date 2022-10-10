@@ -2,7 +2,7 @@ import React from "react";
 
 const StartPage = (props) => {
   return (
-    <div className="min-h-screen text-primary grid place-items-center text-center place-content-center gap-3">
+    <div className="min-h-screen text-primary grid place-items-center text-center place-content-center gap-3 load-anim">
       <div>
         <h1 className="font-semibold text-4xl tracking-wider md:text-4xl">
           Quizzical
@@ -15,8 +15,7 @@ const StartPage = (props) => {
       <button
         onClick={props.startFunction}
         className="bg-primary px-8 hover:scale-95 duration-100 py-2 shadow-primary shadow-md text-theme font-[500] text-sm rounded-md w-fit
-             md:text-lg  hover:bg-primary"
-      >
+             md:text-lg  hover:bg-primary">
         Start
       </button>
     </div>

@@ -62,7 +62,7 @@ const QuizPage = (props) => {
   });
 
   return (
-    <div className=" md:min-w-4xl rounded-2xl md:p-5 px-5 md:shadow-2xl md:shadow-primary ">
+    <div className=" md:min-w-4xl rounded-2xl md:p-5 px-5 md:shadow-2xl md:shadow-primary load-anim">
       {quizes}
     </div>
   );
