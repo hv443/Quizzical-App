@@ -50,6 +50,7 @@ function App() {
   function backFunction() {
     setIsForm((pre) => !pre);
     setIsPlaying(true);
+    setScore(0);
     setIsAllAnswerSelected(true);
   }
 
@@ -63,7 +64,7 @@ function App() {
 
   useEffect(() => {
     const mode = JSON.parse(localStorage.getItem("dark"));
-    setDarkMode(!mode);
+    setDarkMode(mode === null ? false : !mode);
   }, []);
 
   useEffect(() => {
