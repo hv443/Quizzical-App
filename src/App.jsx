@@ -72,7 +72,7 @@ function App() {
       fetch(API_URL)
         .then((res) => res.json())
         .then((data) => {
-          setData(quizData(data.results));
+          setData(quizData(data?.results));
           setLoading((pre) => !pre);
           setCount(0);
         });
