@@ -18,7 +18,7 @@ const QuizPage = (props) => {
       } else {
         optionBgColor = option.isHeld
           ? "bg-activeState border-activeState"
-          : "bg-theme border-secondary hover:bg-hoverState hover:border-hoverState";
+          : "border-secondary hover:bg-hoverState hover:border-hoverState";
       }
 
       return (
@@ -56,7 +56,7 @@ const QuizPage = (props) => {
 
         <div>{options}</div>
 
-        <hr className="border-primary h-[1px] " />
+        <hr className="border-secondary h-[1px] " />
       </div>
     );
   });
